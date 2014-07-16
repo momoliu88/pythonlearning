@@ -39,3 +39,17 @@ test_patterns('abaaaaaaabbbbbbbba', [
     ('a[ab]+', 'a followed by one or more a or b'),
     ('a[ab]?', 'a followed by zero or one a or b'),
     ])
+#group and groups
+text = 'This is some text -- with punctuation.'
+pattern = r'\b(t\w+)\W+(\w+)'
+regex = re.compile(pattern)
+matched = regex.search(text)
+print 'Groups,', matched.groups()
+print 'Group 0,', matched.group(1)
+print 'Group 1,', matched.group(2)
+#group name
+pattern = r'\b(?P<first_word>t\w+)\W+(?P<second_word>\w+)'
+regex = re.compile(pattern)
+matched = regex.search(text)
+print 'Groups,', matched.groups()
+print 'Groups dict,', matched.groupdict()
